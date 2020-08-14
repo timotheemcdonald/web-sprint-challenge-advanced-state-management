@@ -1,1 +1,1 @@
-export {FETCHING_SMURF_START, FETCHING_SMURF_SUCCESS, FETCHING_SMURF_ERROR, fetchSmurfs} from './smurfAction.js'
+export {FETCHING_SMURF_START, FETCHING_SMURF_SUCCESS, FETCHING_SMURF_ERROR, fetchSmurfs, addSmurfToList} from './smurfAction.js'

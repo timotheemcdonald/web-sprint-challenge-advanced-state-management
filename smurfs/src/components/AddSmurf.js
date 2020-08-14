@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { fetchSmurfs } from '../store/actions/smurfAction'
+import { addSmurfToList } from '../store/actions/smurfAction'
 import { connect } from 'react-redux'
 import axios from 'axios'
 
@@ -9,12 +9,10 @@ const blankSmurf = {
     height: '',
 }
 
-const AddSmurf = () => {
+const AddSmurf = (props) => {
     // useEffect(() => {
     //     props.fetchSmurfs()
     // }, [])
-
-
     const [newSmurf, setSmurf] = useState(blankSmurf)
 
     const onChange = (event) => {
@@ -25,15 +23,9 @@ const AddSmurf = () => {
     }
 
     const onSubmit = (event) => {
-        console.log('submit start')
-        axios.post('http://localhost:3333/smurfs', newSmurf)
-        .then(value => {
-            console.log('in submit .then')
-            console.log('this is value in submit', value.data)
-            setSmurf(...newSmurf, [value.data])
-            console.log(value.data, 'value.data in smurf submit')})
-        .catch(error => {
-            console.log('error', error)})
+        event.preventDefault()
+        console.log(props,'this is props in addsmurf file')
+        props.addSmurfToList(newSmurf)
     }
     
 
@@ -69,12 +61,10 @@ const AddSmurf = () => {
     )
 }
 
-const mapStateToProps = (state) => {
-    return {
-        smurf: state.smurf,
-        isLoading: state.isLoading,
-        error: state.error
-    }
-}
+// const mapStateToProps = (state) => {
+//     return {
+//         smurf: state.smurf
+//     }
+// }
 
-export default connect(mapStateToProps, { fetchSmurfs })(AddSmurf);
+export default connect(null, { addSmurfToList })(AddSmurf);
