@@ -2,6 +2,7 @@ import React, {useEffect} from 'react'
 import { connect } from 'react-redux'
 import SmurfCard from './SmurfCard'
 import { fetchSmurfs } from '../store/actions/smurfAction'
+import AddSmurf from './AddSmurf'
 
 const SmurfContainer = (props) => {
     useEffect(() => {
@@ -21,6 +22,7 @@ const SmurfContainer = (props) => {
                     smurf={item} key={item.id} />
             })}
 
+            <AddSmurf />
         </div>
     )
 }
